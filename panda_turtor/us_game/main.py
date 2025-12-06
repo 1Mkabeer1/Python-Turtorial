@@ -26,10 +26,13 @@ while len(correct_answered) < 50:
     user_answer = user_answer.title()
 
     if user_answer == "Exit":
-        missing_state = []
-        for state in all_state:
-            if state not in correct_answered:
-                missing_state.append(state)
+        # missing_state = []
+        # for state in all_state:
+        #     if state not in correct_answered:
+        #         missing_state.append(state)
+
+        missing_state = [state for state in all_state if state not in correct_answered]
+        
         new_data = pandas.DataFrame.from_dict(missing_state)
         new_data.to_csv("user_report.csv")       
         break
